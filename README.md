@@ -1,6 +1,6 @@
 # MongoDB Layer
 
-A simple way to use mongo in our project. Just add your db credentials and you can use the connection from anywhere in the app.
+A simple way to use mongoDB in your Nuxt project.
 
 ## Usage
 
@@ -18,14 +18,16 @@ export default defineNuxtConfig({
 })
 ```
 
+Add your mongo connection string and main database name in your `.env` file:
 
+```
+MONGO_CONNECTION_STRING=
+MONGO_DB=
+```
 
-Now when you start your project, mongo will connect and you can use it throught your app, eg: 
+Now when you start your project, mongo will connect and you can use it throughout your app, eg:
 
 ```js
 const db = mongo.db()
-const response = await db.collection('YOUR_COLLECTION').find()
+const response = await db.collection("YOUR_COLLECTION").find()
 ```
-
-
-
