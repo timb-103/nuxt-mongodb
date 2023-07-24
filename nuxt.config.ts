@@ -3,6 +3,7 @@ export default defineNuxtConfig({
     enabled: false,
   },
   runtimeConfig: {
-    DB_CREDENTIALS: process.env.DB_CREDENTIALS,
+    MONGO_CONNECTION_STRING: process.env.MONGO_CONNECTION_STRING,
+    MONGO_DB: process.env.MONGO_DB,
   },
 })

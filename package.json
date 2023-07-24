@@ -12,5 +12,20 @@
   "devDependencies": {
     "@types/node": "18.16.19",
     "nuxt": "3.6.5"
-  }
+  },
+  "description": "A simple way to use mongo in our project. Just add your db credentials and you can use the connection from anywhere in the app.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timb-103/nuxt-mongodb.git"
+  },
+  "keywords": [
+    "nuxt",
+    "mongodb"
+  ],
+  "author": "Tim B",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timb-103/nuxt-mongodb/issues"
+  },
+  "homepage": "https://github.com/timb-103/nuxt-mongodb#readme"
 }

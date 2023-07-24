@@ -2,12 +2,30 @@
 
 A simple way to use mongo in our project. Just add your db credentials and you can use the connection from anywhere in the app.
 
-## Features
+## Usage
 
-- Connects on load, then shares the same connection everywhere
-- Server closed handling (exits the app to force a restart)
+Install the module:
 
-## Setup
+```sh
+npm i -D nuxt-mongodb
+```
 
-1. Add your db credentials into a .env file as DB_CREDENTIALS
-2. From anywehre call `mongo()` to get the db connection
+Add the module in the `layers` array in `nuxt.config.ts`:
+
+```js
+export default defineNuxtConfig({
+  layers: ["nuxt-mongodb"],
+})
+```
+
+
+
+Now when you start your project, mongo will connect and you can use it throught your app, eg: 
+
+```js
+const db = mongo.db()
+const response = await db.collection('YOUR_COLLECTION').find()
+```
+
+
+
