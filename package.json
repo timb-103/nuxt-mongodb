@@ -1,0 +1,16 @@
+{
+  "name": "nuxt-mongodb",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "dev": "nuxt dev"
+  },
+  "dependencies": {
+    "mongodb": "5.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.16.19",
+    "nuxt": "3.6.5"
+  }
+}
