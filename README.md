@@ -10,11 +10,11 @@ Install the layer:
 npm i -D nuxt-mongodb
 ```
 
-Add the layer in the `layers` array in `nuxt.config.ts`:
+Add the layer in the `extends` array in `nuxt.config.ts`:
 
 ```js
 export default defineNuxtConfig({
-  layers: ["nuxt-mongodb"],
+  extends: ["nuxt-mongodb"],
 })
 ```
 
