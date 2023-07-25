@@ -4,13 +4,13 @@ A simple way to use mongoDB in your Nuxt 3 project.
 
 ## Usage
 
-Install the module:
+Install the layer:
 
 ```sh
 npm i -D nuxt-mongodb
 ```
 
-Add the module in the `layers` array in `nuxt.config.ts`:
+Add the layer in the `layers` array in `nuxt.config.ts`:
 
 ```js
 export default defineNuxtConfig({
@@ -25,7 +25,7 @@ MONGO_CONNECTION_STRING=
 MONGO_DB=
 ```
 
-Now when you start your project, mongo will connect and you can use it throughout your app, eg:
+When you start your project, mongo will connect and you can use it anywhere, eg:
 
 ```js
 const db = mongo.db()
