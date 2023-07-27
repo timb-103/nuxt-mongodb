@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@types/node": "18.16.19",
+    "console-log-colors": "^0.4.0",
     "nuxt": "3.6.5"
   },
   "description": "A simple way to use mongoDB in your Nuxt 3 project.",
