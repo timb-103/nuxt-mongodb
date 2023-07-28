@@ -1,5 +1,5 @@
 import { MongoClient, Db } from "mongodb"
-
+import { red, green, cyan, yellow } from 'console-log-colors';
 let connection: Db | null = null
 let connecting = true
 let connected = false
@@ -22,7 +22,7 @@ export const mongo = {
       connectToMongo()
     }
 
-    console.log("No mongoDB connection, trying to reconnect...")
+    console.log(yellow.bold.underline("No mongoDB connection, trying to reconnect..."))
     throw new Error("No mongoDB connection, trying to reconnect...")
   },
 
@@ -40,7 +40,7 @@ export const mongo = {
  * @returns {Promise<void>} A Promise that resolves when the connection is established.
  */
 export async function connectToMongo(): Promise<void> {
-  console.log("Connecting to mongoDB...")
+  console.log(cyan.bold.underline('Connecting to mongoDB...'))
   connecting = true
 
   // create mongo client
@@ -59,9 +59,9 @@ export async function connectToMongo(): Promise<void> {
     // set to connected
     connected = true
 
-    console.log("Connected to mongoDB.")
+    console.log(green.bold.underline("Connected to mongoDB."))
   } catch (e) {
-    console.log("Failed to connect to mongoDB", e)
+    console.log(red.bold.underline("Failed to connect to mongoDB"), e)
   }
 
   connecting = false
