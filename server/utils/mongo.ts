@@ -4,8 +4,16 @@ let connection: Db | null = null
 let connecting = true
 let connected = false
 
+/**
+ * MongoDB utility object providing functions to interact with the database.
+ */
 export const mongo = {
-  db() {
+  /**
+  * Get the MongoDB database connection.
+  * @returns {Db} The MongoDB database connection.
+  * @throws {Error} Throws an error if there is no active MongoDB connection.
+  */
+  db(): Db {
     if (connection) {
       return connection
     }
@@ -17,12 +25,21 @@ export const mongo = {
     console.log(yellow.bold.underline("No mongoDB connection, trying to reconnect..."))
     throw new Error("No mongoDB connection, trying to reconnect...")
   },
+
+  /**
+   * Check if the MongoDB client is currently connected to the database.
+   * @returns {boolean} True if the MongoDB client is connected.
+   */
   connected() {
     return connected
   },
 }
 
-export async function connectToMongo() {
+/**
+ * Connects to MongoDB and sets up event listeners for closing events.
+ * @returns {Promise<void>} A Promise that resolves when the connection is established.
+ */
+export async function connectToMongo(): Promise<void> {
   console.log(cyan.bold.underline('Connecting to mongoDB...'))
   connecting = true
 
@@ -50,7 +67,11 @@ export async function connectToMongo() {
   connecting = false
 }
 
-// handle closing events
+/**
+ * Handles MongoDB closing events and exits the process.
+ * @param {string} eventName - The name of the closing event.
+ * @param {object} event - The event object.
+ */
 function handleEventClosed(eventName: string, event: object) {
   console.log(`received ${eventName}: ${JSON.stringify(event, null, 2)}`)
   process.exit(0)
