@@ -1,5 +1,5 @@
-import { MongoClient, Db } from "mongodb"
-import { red, green, cyan, yellow } from 'console-log-colors';
+import { MongoClient, Db } from 'mongodb'
+import { red, green, cyan, yellow } from 'console-log-colors'
 let connection: Db | null = null
 let connecting = true
 let connected = false
@@ -9,10 +9,10 @@ let connected = false
  */
 export const mongo = {
   /**
-  * Get the MongoDB database connection.
-  * @returns {Db} The MongoDB database connection.
-  * @throws {Error} Throws an error if there is no active MongoDB connection.
-  */
+   * Get the MongoDB database connection.
+   * @returns {Db} The MongoDB database connection.
+   * @throws {Error} Throws an error if there is no active MongoDB connection.
+   */
   db(): Db {
     if (connection) {
       return connection
@@ -22,8 +22,8 @@ export const mongo = {
       connectToMongo()
     }
 
-    console.log(yellow.bold.underline("No mongoDB connection, trying to reconnect..."))
-    throw new Error("No mongoDB connection, trying to reconnect...")
+    console.log(yellow.bold.underline('No mongoDB connection, trying to reconnect...'))
+    throw new Error('No mongoDB connection, trying to reconnect...')
   },
 
   /**
@@ -46,8 +46,8 @@ export async function connectToMongo(): Promise<void> {
   // create mongo client
   const client = new MongoClient(useRuntimeConfig().MONGO_CONNECTION_STRING)
 
-  client.on("serverClosed", (event: object) => handleEventClosed("serverClosed", event))
-  client.on("topologyClosed", (event: object) => handleEventClosed("topologyClosed", event))
+  client.on('serverClosed', (event: object) => handleEventClosed('serverClosed', event))
+  client.on('topologyClosed', (event: object) => handleEventClosed('topologyClosed', event))
 
   try {
     // connect
@@ -59,9 +59,9 @@ export async function connectToMongo(): Promise<void> {
     // set to connected
     connected = true
 
-    console.log(green.bold.underline("Connected to mongoDB."))
+    console.log(green.bold.underline('Connected to mongoDB.'))
   } catch (e) {
-    console.log(red.bold.underline("Failed to connect to mongoDB"), e)
+    console.log(red.bold.underline('Failed to connect to mongoDB'), e)
   }
 
   connecting = false

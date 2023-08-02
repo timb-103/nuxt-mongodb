@@ -4,14 +4,18 @@
   "type": "module",
   "main": "./nuxt.config.ts",
   "scripts": {
-    "dev": "nuxt dev"
+    "dev": "nuxi dev .playground",
+    "build": "nuxt build .playground",
+    "generate": "nuxt generate .playground",
+    "preview": "nuxt preview .playground",
+    "postinstall": "nuxt prepare .playground"
   },
   "dependencies": {
-    "mongodb": "5.7.0"
+    "mongodb": "5.7.0",
+    "console-log-colors": "0.4.0"
   },
   "devDependencies": {
     "@types/node": "18.16.19",
-    "console-log-colors": "0.4.0",
     "nuxt": "3.6.5"
   },
   "description": "A simple way to use mongoDB in your Nuxt 3 project.",
