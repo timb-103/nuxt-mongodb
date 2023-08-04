@@ -1,4 +1,4 @@
-# Nuxt 3 MongoDB Layer
+# Nuxt MongoDB
 
 A simple way to use mongoDB in your Nuxt 3 project.
 
