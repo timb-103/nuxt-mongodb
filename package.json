@@ -1,6 +1,6 @@
 {
   "name": "nuxt-mongodb",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A simple way to use mongoDB in your Nuxt 3 project.",
   "repository": {
     "type": "git",
