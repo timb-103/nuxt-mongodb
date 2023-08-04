@@ -14,7 +14,7 @@ Add `nuxt-mongodb` in the `modules` array in `nuxt.config.ts`:
 
 ```js
 export default defineNuxtConfig({
-  modules: ["nuxt-mongodb"],
+  modules: ['nuxt-mongodb'],
 })
 ```
 
@@ -28,8 +28,8 @@ MONGO_DB={{your_mongo_db_name}}
 When you start your project, mongo will connect and you can use it like this:
 
 ```js
-import { mongo } from "#mongodb"
+import { mongo } from '#nuxt-mongodb'
 
 const db = mongo.db()
-const response = await db.collection("YOUR_COLLECTION").find()
+const response = await db.collection('YOUR_COLLECTION').find()
 ```

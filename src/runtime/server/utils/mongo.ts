@@ -46,8 +46,16 @@ export async function connectToMongo(): Promise<void> {
   connecting = true
 
   // create mongo client
-  const connectionString = useRuntimeConfig().nuxtMongodbAuth.MONGO_CONNECTION_STRING
-  const dbName = useRuntimeConfig().nuxtMongodbAuth.MONGO_DB
+  const connectionString = useRuntimeConfig().nuxtMongodb.MONGO_CONNECTION_STRING
+  const dbName = useRuntimeConfig().nuxtMongodb.MONGO_DB
+
+  if (!connectionString) {
+    red.bold.underline('No connection string found.')
+  }
+  if (!dbName) {
+    red.bold.underline('No db name found.')
+  }
+
   const client = new MongoClient(connectionString)
 
   client.on('serverClosed', (event: object) => handleEventClosed('serverClosed', event))

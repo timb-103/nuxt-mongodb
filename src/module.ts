@@ -6,8 +6,8 @@ export interface ModuleOptions {}
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'nuxt-mongodb-auth',
-    configKey: 'nuxtMongodbAuth',
+    name: 'nuxt-mongodb',
+    configKey: 'nuxtMongodb',
   },
   defaults: {},
   async setup(options, nuxt) {
@@ -15,7 +15,7 @@ export default defineNuxtModule<ModuleOptions>({
     const { resolve } = createResolver(import.meta.url)
 
     // add options to runtime config
-    nuxt.options.runtimeConfig.nuxtMongodbAuth = defu(nuxt.options.runtimeConfig.nuxtMongodbAuth, {
+    nuxt.options.runtimeConfig.nuxtMongodb = defu(nuxt.options.runtimeConfig.nuxtMongodb, {
       MONGO_CONNECTION_STRING: process.env.MONGO_CONNECTION_STRING,
       MONGO_DB: process.env.MONGO_DB,
     })
@@ -31,15 +31,15 @@ export default defineNuxtModule<ModuleOptions>({
           inline: [resolve('./runtime')],
         }
       )
-      nitroConfig.alias['#mongodb'] = resolve('./runtime/server/utils')
+      nitroConfig.alias['#nuxt-mongodb'] = resolve('./runtime/server/utils')
     })
 
-    // add exports so we can use import {} from '#mongodb'
+    // add exports so we can use import {} from '#nuxt-mongodb'
     addTemplate({
-      filename: 'types/mongodb.d.ts',
+      filename: 'types/nuxt-mongodb.d.ts',
       getContents: () =>
         [
-          "declare module '#mongodb' {",
+          "declare module '#nuxt-mongodb' {",
           `  const mongo: typeof import('${resolve('./runtime/server/utils')}').mongo`,
           '}',
         ].join('\n'),

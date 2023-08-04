@@ -1,5 +1,5 @@
 import { defineEventHandler } from 'h3'
-import { mongo } from '#mongodb'
+import { mongo } from '#nuxt-mongodb'
 
 export default defineEventHandler(async () => {
   try {
