@@ -1,5 +1,7 @@
 import { MongoClient, Db } from 'mongodb'
 import { red, green, cyan, yellow } from 'console-log-colors'
+import { useRuntimeConfig } from '#imports'
+
 let connection: Db | null = null
 let connecting = true
 let connected = false
@@ -44,7 +46,9 @@ export async function connectToMongo(): Promise<void> {
   connecting = true
 
   // create mongo client
-  const client = new MongoClient(useRuntimeConfig().MONGO_CONNECTION_STRING)
+  const connectionString = useRuntimeConfig().nuxtMongodbAuth.MONGO_CONNECTION_STRING
+  const dbName = useRuntimeConfig().nuxtMongodbAuth.MONGO_DB
+  const client = new MongoClient(connectionString)
 
   client.on('serverClosed', (event: object) => handleEventClosed('serverClosed', event))
   client.on('topologyClosed', (event: object) => handleEventClosed('topologyClosed', event))
@@ -54,7 +58,7 @@ export async function connectToMongo(): Promise<void> {
     await client.connect()
 
     // create a connection to the db from env
-    connection = client.db(useRuntimeConfig().MONGO_DB)
+    connection = client.db(dbName)
 
     // set to connected
     connected = true
