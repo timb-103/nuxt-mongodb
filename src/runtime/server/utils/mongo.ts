@@ -1,6 +1,7 @@
 import { MongoClient, Db } from 'mongodb'
 import { red, green, cyan, yellow } from 'console-log-colors'
 import { useRuntimeConfig } from '#imports'
+import type { Mongo } from '../../../types'
 
 let connection: Db | null = null
 let connecting = true
@@ -9,7 +10,7 @@ let connected = false
 /**
  * MongoDB utility object providing functions to interact with the database.
  */
-export const mongo = {
+export const mongo: Mongo = {
   /**
    * Get the MongoDB database connection.
    * @returns {Db} The MongoDB database connection.
