@@ -4,6 +4,8 @@ import { defu } from 'defu'
 // Module options TypeScript interface definition
 export interface ModuleOptions {}
 
+export * from './types'
+
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'nuxt-mongodb',
