@@ -4,8 +4,6 @@ import { defu } from 'defu'
 // Module options TypeScript interface definition
 export interface ModuleOptions {}
 
-export * from './types'
-
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'nuxt-mongodb',
@@ -33,7 +31,7 @@ export default defineNuxtModule<ModuleOptions>({
           inline: [resolve('./runtime')],
         }
       )
-      nitroConfig.alias['#nuxt-mongodb'] = resolve('./runtime/server/utils')
+      nitroConfig.alias['#nuxt-mongodb'] = resolve('./runtime/server/utils/mongo')
     })
 
     // add exports so we can use import {} from '#nuxt-mongodb'
@@ -42,7 +40,7 @@ export default defineNuxtModule<ModuleOptions>({
       getContents: () =>
         [
           "declare module '#nuxt-mongodb' {",
-          `  const mongo: typeof import('${resolve('./runtime/server/utils')}').mongo`,
+          `  const mongo: typeof import('${resolve('./runtime/server/utils/mongo')}').mongo`,
           '}',
         ].join('\n'),
     })

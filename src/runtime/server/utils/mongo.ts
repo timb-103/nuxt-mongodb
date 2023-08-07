@@ -1,11 +1,15 @@
 import { MongoClient, Db } from 'mongodb'
 import { red, green, cyan, yellow } from 'console-log-colors'
 import { useRuntimeConfig } from '#imports'
-import type { Mongo } from '../../../types'
 
 let connection: Db | null = null
 let connecting = true
 let connected = false
+
+export interface Mongo {
+  db: () => Db
+  connected: () => boolean
+}
 
 /**
  * MongoDB utility object providing functions to interact with the database.
@@ -33,7 +37,7 @@ export const mongo: Mongo = {
    * Check if the MongoDB client is currently connected to the database.
    * @returns {boolean} True if the MongoDB client is connected.
    */
-  connected() {
+  connected(): boolean {
     return connected
   },
 }
