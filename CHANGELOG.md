@@ -1,6 +1,10 @@
 # Changelog
 
 
+## v1.0.13
+
+[compare changes](https://github.com/timb-103/nuxt-mongodb/compare/v1.0.12...v1.0.13)
+
 ## v1.0.12
 
 [compare changes](https://github.com/timb-103/nuxt-mongodb/compare/v1.0.11...v1.0.12)
